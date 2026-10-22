@@ -267,10 +267,21 @@ export default function App() {
         )}
       </main>
 
+      {currentMode === 'visualize' && (
+        <footer className="app-status-bar">
+          <span className="status-ready"><span /> Engine ready</span>
+          <span>Time Complexity: <strong>{algorithmMode === 'brute_force' ? 'O(2ⁿ)' : 'O(n³)'}</strong></span>
+          <span>Space Complexity: <strong>O(n²)</strong></span>
+          <button type="button" onClick={() => setCurrentMode('learn')}>Documentation</button>
+        </footer>
+      )}
+
       <style>{`
         .app-layout {
           height: 100vh;
+          height: 100dvh;
           max-height: 100vh;
+          max-height: 100dvh;
           display: flex;
           flex-direction: column;
           background: var(--bg-app);
@@ -305,9 +316,9 @@ export default function App() {
         /* 3 synchronized panels: Current Step panel is bigger and primary */
         .workspace-grid {
           display: grid;
-          grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.15fr) minmax(360px, 1.4fr);
+          grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 0.85rem;
-          margin: 0 1.25rem 0.65rem;
+          margin: 0 1rem 0.65rem;
           flex: 1;
           min-height: 0;
           transition: all var(--transition-normal);
@@ -328,7 +339,7 @@ export default function App() {
         }
 
         /* Responsive Breakpoints */
-        @media (max-width: 1180px) {
+        @media (max-width: 760px) {
           .app-layout {
             height: auto;
             max-height: none;
@@ -360,7 +371,7 @@ export default function App() {
           }
         }
 
-        @media (max-width: 760px) {
+        @media (max-width: 560px) {
           .workspace-grid {
             grid-template-columns: minmax(0, 1fr);
           }

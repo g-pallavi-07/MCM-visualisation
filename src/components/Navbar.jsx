@@ -234,7 +234,7 @@ export default function Navbar({
           padding: 0.45rem 0.55rem;
         }
 
-        @media (max-width: 1180px) {
+        @media (max-width: 760px) {
           .brand-tagline {
             display: none;
           }

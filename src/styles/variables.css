@@ -1,39 +1,39 @@
 :root {
   color-scheme: dark;
 
-  --bg-page: #08050A;
-  --bg-workspace: #17101B;
-  --bg-panel: #100B13;
-  --bg-input: #08050A;
-  --bg-popover: #211626;
-  --bg-completed: #29202E;
+  --bg-page: #0D1117;
+  --bg-workspace: #161B22;
+  --bg-panel: #161B22;
+  --bg-input: #0D1117;
+  --bg-popover: #1C222B;
+  --bg-completed: #20262F;
 
-  --border-default: #493449;
-  --border-strong: #73516F;
+  --border-default: #2B323B;
+  --border-strong: #3B4652;
 
   --text-primary: #FFFFFF;
-  --text-secondary: #E8E1EB;
-  --text-muted: #BDB0C4;
-  --text-inverse: #08050A;
+  --text-secondary: #C4CCD6;
+  --text-muted: #8B949E;
+  --text-inverse: #FFFFFF;
 
-  --pink-primary: #FF2E93;
-  --pink-hover: #FF80BD;
-  --pink-soft: #48152F;
+  --pink-primary: #F43F5E;
+  --pink-hover: #FB7185;
+  --pink-soft: #3B1721;
 
-  --state-active: #FF2E93;
-  --state-dependency: #DCCAFF;
-  --state-optimal: #7CFFB2;
-  --state-optimal-text: #143525;
-  --state-candidate: #FFD65A;
+  --state-active: #F43F5E;
+  --state-dependency: #63D9F5;
+  --state-optimal: #00D6A3;
+  --state-optimal-text: #06251E;
+  --state-candidate: #F6C453;
   --state-duplicate: #FF668A;
 
-  --surface-active: #48152F;
-  --surface-dependency: #30223F;
-  --surface-optimal: #143525;
+  --surface-active: #3B1721;
+  --surface-dependency: #102D38;
+  --surface-optimal: #0D352C;
   --surface-candidate: #392D12;
   --surface-duplicate: #401725;
 
-  --focus-ring: #FF80BD;
+  --focus-ring: #FB7185;
   --disabled-bg: #29202E;
   --disabled-text: #BDB0C4;
 
@@ -56,7 +56,7 @@
   --accent-pink-light: var(--pink-hover);
   --accent-pink-glow: var(--pink-soft);
   --accent-green: var(--state-optimal);
-  --accent-green-light: var(--state-optimal-text);
+  --accent-green-light: #00D6A3;
   --accent-green-glow: var(--surface-optimal);
   --accent-cyan: var(--state-dependency);
   --accent-cyan-light: var(--state-dependency);
@@ -75,9 +75,9 @@
   --font-serif: Georgia, "Times New Roman", serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
   --radius-full: 9999px;
 
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.24);
@@ -115,6 +115,7 @@
   --state-dependency: #DCCAFF;
   --state-optimal: #B9D8C5;
   --state-optimal-text: #386641;
+  --accent-green-light: #24784F;
   --state-candidate: #FFD65A;
   --state-duplicate: #FF668A;
   --surface-active: #F8DCE9;
