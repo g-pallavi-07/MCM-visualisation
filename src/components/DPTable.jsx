@@ -15,7 +15,8 @@ export default function DPTable({
   chainLength,
   numMatrices,
   onCellClick,
-  candidate
+  candidate,
+  isSolved = false
 }) {
   const [tableMode, setTableMode] = useState('cost'); // 'cost' or 'split'
   const [showExplanation, setShowExplanation] = useState(false);
@@ -149,7 +150,9 @@ export default function DPTable({
 
                 // Upper triangular cell (i < j)
                 let cellClass = 'cell-upper';
-                if (cellActive) cellClass += ' cell-active animate-pulse-pink';
+                if (cellActive && isSolved) cellClass += ' cell-optimal';
+                else if (cellActive && candidate) cellClass += ' cell-active cell-candidate';
+                else if (cellActive) cellClass += ' cell-active animate-pulse-pink';
                 else if (cellRead) cellClass += ' cell-read';
                 else if (val !== null) cellClass += ' cell-computed';
                 else cellClass += ' cell-uncomputed';
@@ -252,8 +255,8 @@ export default function DPTable({
         }
 
         .view-toggle-btn.active-view {
-          background: var(--accent-pink);
-          color: #111714;
+          background: var(--pink-primary);
+          color: var(--text-inverse);
           font-weight: 700;
         }
 
@@ -276,7 +279,7 @@ export default function DPTable({
         }
 
         .diagonal-popover {
-          background: var(--bg-surface-elevated);
+          background: var(--bg-popover);
           border-bottom: 1px solid var(--border-medium);
           padding: 0.65rem 0.85rem;
           font-size: 0.76rem;
@@ -319,7 +322,7 @@ export default function DPTable({
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 0.72rem;
+          font-size: 0.78rem;
           font-weight: 700;
           color: var(--text-muted);
           padding: 0.25rem;
@@ -331,8 +334,8 @@ export default function DPTable({
         }
 
         .grid-cell {
-          min-height: 56px;
-          min-width: 56px;
+          min-height: 60px;
+          min-width: 60px;
           border-radius: var(--radius-sm);
           display: flex;
           flex-direction: column;
@@ -348,12 +351,12 @@ export default function DPTable({
           position: absolute;
           top: 2px;
           left: 3px;
-          font-size: 0.55rem;
+          font-size: 0.62rem;
           color: var(--text-faint);
         }
 
         .cell-content {
-          font-size: 0.8rem;
+          font-size: 0.85rem;
           font-weight: 700;
         }
 
@@ -388,9 +391,9 @@ export default function DPTable({
         }
 
         .cell-computed {
-          background: var(--bg-surface-elevated);
+          background: var(--bg-completed);
           border-color: var(--border-medium);
-          color: var(--accent-green-light);
+          color: var(--text-primary);
         }
 
         .cell-uncomputed {
@@ -399,19 +402,31 @@ export default function DPTable({
         }
 
         .cell-active {
-          background: var(--bg-surface-active) !important;
-          border-color: var(--accent-pink) !important;
-          color: #ffffff !important;
-          box-shadow: 0 0 12px var(--accent-pink-glow);
-          transform: scale(1.04);
+          background: var(--state-active) !important;
+          border-color: var(--pink-hover) !important;
+          color: var(--text-inverse) !important;
+          box-shadow: none;
+          transform: none;
           z-index: 20;
         }
 
         .cell-read {
-          border: 2px dashed var(--accent-green) !important;
-          background: var(--accent-green-glow) !important;
-          color: var(--text-main) !important;
+          border: 2px solid var(--state-dependency) !important;
+          background: var(--state-dependency) !important;
+          color: #180d1b !important;
           z-index: 15;
+        }
+
+        .cell-candidate {
+          background: var(--state-candidate) !important;
+          border-color: var(--state-candidate) !important;
+          color: #241800 !important;
+        }
+
+        .cell-optimal {
+          background: var(--state-optimal) !important;
+          border-color: var(--state-optimal) !important;
+          color: #062014 !important;
         }
 
         .tie-indicator {

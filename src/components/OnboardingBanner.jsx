@@ -44,8 +44,8 @@ export default function OnboardingBanner({ isVisible, onDismiss }) {
         }
 
         .onboarding-banner-card {
-          background: linear-gradient(135deg, rgba(244, 114, 182, 0.12), rgba(110, 231, 183, 0.08));
-          border: 1px solid rgba(244, 114, 182, 0.35);
+          background: var(--bg-workspace);
+          border: 1px solid var(--border-default);
           border-radius: var(--radius-md);
           padding: 0.65rem 1rem;
           display: flex;
@@ -80,7 +80,7 @@ export default function OnboardingBanner({ isVisible, onDismiss }) {
 
         .onboarding-title {
           font-size: 0.82rem;
-          color: var(--text-main);
+          color: var(--text-primary);
         }
 
         .onboarding-steps {
@@ -94,8 +94,8 @@ export default function OnboardingBanner({ isVisible, onDismiss }) {
           display: inline-flex;
           align-items: center;
           gap: 0.35rem;
-          font-size: 0.72rem;
-          color: var(--text-muted);
+          font-size: 0.78rem;
+          color: var(--text-secondary);
           background: var(--bg-surface);
           border: 1px solid var(--border-subtle);
           padding: 0.15rem 0.5rem;

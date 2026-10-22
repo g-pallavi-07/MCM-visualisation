@@ -123,9 +123,9 @@ export default function StepDetailPanel({
                   <span className="pill-val">{formatNumber(candidate.multCost)}</span>
                 </div>
                 <span className="pill-op">=</span>
-                <div className="split-pill total-pill">
+                <div className={`split-pill total-pill ${candidate.isNewBest ? 'optimal-pill' : 'candidate-pill'}`}>
                   <span className="pill-lbl">Cost</span>
-                  <span className="pill-val highlight-green">{formatNumber(candidate.totalCost)}</span>
+                  <span className="pill-val">{formatNumber(candidate.totalCost)}</span>
                 </div>
               </div>
             )}
@@ -194,8 +194,8 @@ export default function StepDetailPanel({
         }
 
         .hero-card {
-          border-color: rgba(244, 114, 182, 0.25);
-          background: linear-gradient(135deg, rgba(244, 114, 182, 0.05), rgba(110, 231, 183, 0.03));
+          border-color: var(--border-default);
+          background: transparent;
         }
 
         .step-meta-row {
@@ -246,9 +246,9 @@ export default function StepDetailPanel({
         .step-formula-box {
           font-size: 0.88rem;
           line-height: 1.45;
-          color: var(--accent-green-light);
-          background: var(--bg-app);
-          border: 1px solid rgba(110, 231, 183, 0.28);
+          color: var(--text-secondary);
+          background: var(--bg-panel);
+          border: 1px solid var(--border-default);
           border-radius: var(--radius-sm);
           padding: 0.6rem 0.75rem;
           word-break: break-word;

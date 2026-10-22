@@ -242,8 +242,8 @@ export default function ConfigPanel({
           align-items: center;
           gap: 0.3rem;
           padding: 0.28rem 0.7rem;
-          background: linear-gradient(135deg, var(--accent-pink), var(--accent-green));
-          color: #111714;
+          background: var(--pink-primary);
+          color: var(--text-inverse);
           border-radius: var(--radius-sm);
           font-size: 0.74rem;
           font-weight: 700;
@@ -403,9 +403,9 @@ export default function ConfigPanel({
           align-items: center;
           gap: 0.35rem;
           padding: 0.45rem 0.85rem;
-          background: linear-gradient(135deg, var(--accent-pink), var(--accent-green));
-          color: #111714;
-          box-shadow: 0 0 12px rgba(244, 114, 182, 0.4);
+          background: var(--pink-primary);
+          color: var(--text-inverse);
+          box-shadow: none;
           border-radius: var(--radius-sm);
           font-size: 0.78rem;
           font-weight: 700;

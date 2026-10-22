@@ -311,8 +311,8 @@ export default function WhatIsPModal({ isOpen, onClose }) {
           align-items: center;
           gap: 0.45rem;
           padding: 0.45rem 1.15rem;
-          background: linear-gradient(135deg, var(--accent-pink), var(--accent-green));
-          color: #111714;
+          background: var(--pink-primary);
+          color: var(--text-inverse);
           border-radius: var(--radius-md);
           font-weight: 700;
           font-size: 0.82rem;

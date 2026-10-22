@@ -456,6 +456,8 @@ export default function PracticeMode({ dimensions }) {
                     >
                       <span className="opt-marker">{String.fromCharCode(65 + idx)}</span>
                       <span className="opt-text">{formatNumber(costOpt)} operations</span>
+                      {btnClass.includes('option-correct') && <CheckCircle2 size={17} aria-label="Correct answer" />}
+                      {btnClass.includes('option-wrong') && <XCircle size={17} aria-label="Incorrect answer" />}
                     </button>
                   );
                 })}
@@ -543,6 +545,8 @@ export default function PracticeMode({ dimensions }) {
                         <span className="opt-split-k highlight-pink">Split at k = {opt.k}</span>
                         <span className="opt-grouping text-muted">{opt.grouping}</span>
                       </div>
+                      {btnClass.includes('option-correct') && <CheckCircle2 size={17} aria-label="Optimal split" />}
+                      {btnClass.includes('option-wrong') && <XCircle size={17} aria-label="Incorrect split" />}
                     </button>
                   );
                 })}
@@ -608,6 +612,8 @@ export default function PracticeMode({ dimensions }) {
                     >
                       <span className="opt-marker">{String.fromCharCode(65 + idx)}</span>
                       <span className="opt-text">{exprOpt}</span>
+                      {btnClass.includes('option-correct') && <CheckCircle2 size={17} aria-label="Correct answer" />}
+                      {btnClass.includes('option-wrong') && <XCircle size={17} aria-label="Incorrect answer" />}
                     </button>
                   );
                 })}
@@ -619,7 +625,18 @@ export default function PracticeMode({ dimensions }) {
           {isAnswered && currentQuestion && currentQuestion.type === challengeType && (
             <div className="explanation-results-box">
               <div className="result-header">
-                {challengeType === 'cost' && selectedOption === currentQuestion.correctCost ? (
+                {revealed ? (
+                  <div className="result-status reveal-status">
+                    <Eye size={18} />
+                    <span>
+                      Answer revealed. {challengeType === 'cost'
+                        ? `The minimum cost is ${formatNumber(currentQuestion.correctCost)}.`
+                        : challengeType === 'split'
+                        ? `The optimal split${currentQuestion.optimalSplits?.length === 1 ? ' is' : 's are'} k = ${currentQuestion.optimalSplits?.join(', ')}.`
+                        : `The optimal parenthesization is ${currentQuestion.expr}.`}
+                    </span>
+                  </div>
+                ) : challengeType === 'cost' && selectedOption === currentQuestion.correctCost ? (
                   <div className="result-status correct-status">
                     <CheckCircle2 size={18} />
                     <span>Correct! m[{currentQuestion.i}][{currentQuestion.j}] = {formatNumber(currentQuestion.correctCost)} multiplications.</span>
@@ -780,7 +797,7 @@ export default function PracticeMode({ dimensions }) {
 
         .active-source {
           background: var(--accent-green);
-          color: #111714;
+          color: var(--text-inverse);
           font-weight: 700;
         }
 
@@ -1006,18 +1023,6 @@ export default function PracticeMode({ dimensions }) {
           flex-shrink: 0;
         }
 
-        .option-correct {
-          background: var(--accent-green-glow) !important;
-          border-color: var(--accent-green) !important;
-          color: var(--accent-green-light) !important;
-        }
-
-        .option-wrong {
-          background: var(--accent-coral-glow) !important;
-          border-color: var(--accent-coral) !important;
-          color: var(--accent-coral-light) !important;
-        }
-
         .explanation-results-box {
           background: var(--bg-app);
           border: 1px solid var(--border-medium);
@@ -1084,11 +1089,11 @@ export default function PracticeMode({ dimensions }) {
           gap: 0.45rem;
           padding: 0.55rem 1.15rem;
           border-radius: var(--radius-md);
-          background: linear-gradient(135deg, var(--accent-pink), var(--accent-green));
-          color: #111714;
+          background: var(--pink-primary);
+          color: var(--text-inverse);
           font-weight: 700;
           font-size: 0.82rem;
-          box-shadow: 0 2px 8px var(--accent-pink-glow);
+          box-shadow: none;
         }
 
         .btn-next-question:hover {

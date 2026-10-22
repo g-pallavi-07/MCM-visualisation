@@ -120,12 +120,12 @@ export default function Navbar({
           width: 36px;
           height: 36px;
           border-radius: var(--radius-md);
-          background: linear-gradient(135deg, var(--accent-pink), var(--accent-green));
+          background: var(--pink-primary);
           display: flex;
           align-items: center;
           justify-content: center;
           color: #ffffff;
-          box-shadow: 0 0 16px rgba(244, 114, 182, 0.4), 0 0 20px rgba(110, 231, 183, 0.3);
+          box-shadow: none;
         }
 
         .logo-icon {
@@ -145,9 +145,9 @@ export default function Navbar({
 
         .highlight-text {
           color: var(--accent-pink-light);
-          background: linear-gradient(90deg, var(--accent-pink-light), var(--accent-green-light));
+          background: none;
           -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          -webkit-text-fill-color: currentColor;
         }
 
         .brand-tagline {
@@ -184,9 +184,9 @@ export default function Navbar({
         }
 
         .mode-btn.active {
-          color: #ffffff;
-          background: var(--accent-primary);
-          box-shadow: var(--shadow-glow-pink);
+          color: var(--pink-primary);
+          background: transparent;
+          box-shadow: none;
         }
 
         .nav-badge {

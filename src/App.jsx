@@ -235,6 +235,7 @@ export default function App() {
                     numMatrices={numMatrices}
                     onCellClick={handleCellClick}
                     candidate={currentStep.candidate}
+                    isSolved={currentStep.type === 'SOLVED'}
                   />
                 </div>
               )}

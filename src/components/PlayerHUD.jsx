@@ -312,27 +312,30 @@ export default function PlayerHUD({
         }
 
         .hud-btn:disabled {
-          opacity: 0.35;
+          opacity: 1;
+          color: var(--disabled-text);
+          background: var(--disabled-bg);
+          border-color: var(--border-default);
           cursor: not-allowed;
         }
 
         .btn-play {
-          background: linear-gradient(135deg, var(--accent-pink), var(--accent-green));
-          color: #111714;
+          background: var(--pink-primary);
+          color: var(--text-inverse);
           font-weight: 700;
           border: none;
-          box-shadow: 0 2px 8px var(--accent-pink-glow);
+          box-shadow: none;
           padding: 0.38rem 0.95rem;
         }
 
         .btn-play:hover:not(:disabled) {
-          box-shadow: 0 4px 12px var(--accent-pink-glow);
-          filter: brightness(1.08);
+          background: var(--pink-hover);
+          box-shadow: none;
         }
 
         .btn-play.is-playing {
-          background: linear-gradient(135deg, var(--accent-green), var(--accent-pink));
-          color: #111714;
+          background: var(--pink-primary);
+          color: var(--text-inverse);
         }
 
         .hud-speed-group {
@@ -365,7 +368,7 @@ export default function PlayerHUD({
 
         .active-speed {
           background: var(--accent-pink);
-          color: #111714;
+          color: var(--text-inverse);
           font-weight: 700;
         }
 
@@ -424,8 +427,8 @@ export default function PlayerHUD({
           border-radius: 50%;
           background: var(--accent-pink);
           cursor: pointer;
-          border: 2px solid #ffffff;
-          box-shadow: 0 0 6px var(--accent-pink-glow);
+          border: 2px solid var(--text-primary);
+          box-shadow: none;
         }
 
         .hud-metrics-strip {
@@ -505,8 +508,8 @@ export default function PlayerHUD({
         }
 
         .active-view-pill {
-          background: var(--accent-green);
-          color: #111714;
+          background: var(--pink-primary);
+          color: var(--text-inverse);
           font-weight: 700;
         }
 

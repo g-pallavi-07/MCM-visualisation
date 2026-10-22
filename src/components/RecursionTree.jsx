@@ -282,7 +282,7 @@ export default function RecursionTree({
                       {isCached
                         ? '⚡ Cache Hit'
                         : isDuplicate
-                        ? `Call #${node.callNum} (DUP)`
+                        ? `Call #${node.callNum} (DUPLICATE)`
                         : `Call #${node.callNum}`}
                     </text>
 
@@ -405,8 +405,7 @@ export default function RecursionTree({
           flex: 1;
           overflow: hidden;
           position: relative;
-          background: radial-gradient(circle at center, rgba(244, 114, 182, 0.08) 1px, transparent 1px);
-          background-size: 20px 20px;
+          background: var(--bg-panel);
           display: flex;
           align-items: center;
           justify-content: center;
