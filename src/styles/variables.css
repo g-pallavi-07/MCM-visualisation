@@ -1,0 +1,134 @@
+:root {
+  /* MCM Studio — polished midnight palette */
+  
+  /* Background Canvas & Glass Surfaces */
+  --bg-app: #0b1018;
+  --bg-ambient: rgba(78, 91, 160, 0.12);
+  --bg-header: rgba(15, 21, 31, 0.9);
+  --bg-surface: #121a25;
+  --bg-surface-elevated: #192331;
+  --bg-surface-active: #202d3d;
+  --bg-glass: rgba(18, 26, 37, 0.88);
+
+  /* Hairline Precision Borders */
+  --border-subtle: rgba(214, 225, 239, 0.09);
+  --border-medium: rgba(214, 225, 239, 0.17);
+  --border-focus: #8b83f6;
+
+  /* High-Contrast Typography */
+  --text-main: #f2f5f8;
+  --text-muted: #a2afbe;
+  --text-faint: #718094;
+  --text-inverse: #ffffff;
+
+  /* Soft sapphire brand accent */
+  --accent-primary: #7167df;
+  --accent-primary-light: #a39bff;
+  --accent-primary-glow: rgba(113, 103, 223, 0.24);
+
+  /* Lavender aliases retained for existing component accents */
+  --accent-pink: #9488ef;
+  --accent-pink-light: #b3aaff;
+  --accent-pink-glow: rgba(148, 136, 239, 0.23);
+
+  --accent-green: #35b98b;
+  --accent-green-light: #61d7a8;
+  --accent-green-glow: rgba(53, 185, 139, 0.22);
+
+  --accent-cyan: #42b8c3;
+  --accent-cyan-light: #74d4d5;
+  --accent-cyan-glow: rgba(66, 184, 195, 0.22);
+
+  /* Warm brass highlights */
+  --accent-amber: #d99a45;
+  --accent-amber-light: #f0bd70;
+  --accent-amber-glow: rgba(217, 154, 69, 0.22);
+
+  --accent-coral: #db6178;
+  --accent-coral-light: #f18b9c;
+  --accent-coral-glow: rgba(219, 97, 120, 0.22);
+
+  --accent-purple: #9488ef;
+  --accent-purple-light: #b3aaff;
+  --accent-purple-glow: rgba(148, 136, 239, 0.22);
+
+  /* Typography Stack */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+
+  /* Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Luxury Diffusion Shadows & Jewel Ambient Glows */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.26);
+  --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, 0.42);
+  --shadow-lg: 0 16px 38px -12px rgba(0, 0, 0, 0.55);
+  --shadow-glow-pink: 0 0 16px rgba(148, 136, 239, 0.2);
+  --shadow-glow-green: 0 0 16px rgba(53, 185, 139, 0.2);
+  --shadow-glow-cyan: 0 0 16px rgba(66, 184, 195, 0.2);
+  --shadow-glow-indigo: 0 0 16px rgba(113, 103, 223, 0.2);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Warm porcelain alternative theme */
+[data-theme='light'] {
+  --bg-app: #f4f5f7;
+  --bg-ambient: rgba(113, 103, 223, 0.08);
+  --bg-header: rgba(250, 251, 253, 0.92);
+  --bg-surface: #fbfcfd;
+  --bg-surface-elevated: #f1f3f6;
+  --bg-surface-active: #e7eaf0;
+  --bg-glass: rgba(251, 252, 253, 0.94);
+
+  --border-subtle: #e3e6eb;
+  --border-medium: #cdd3dc;
+  --border-focus: #7167df;
+
+  --text-main: #1c2430;
+  --text-muted: #596575;
+  --text-faint: #8792a1;
+  --text-inverse: #ffffff;
+
+  --accent-primary: #6559cc;
+  --accent-primary-light: #5549bb;
+  --accent-primary-glow: rgba(101, 89, 204, 0.15);
+
+  --accent-pink: #7669d4;
+  --accent-pink-light: #5d50bd;
+  --accent-pink-glow: rgba(118, 105, 212, 0.15);
+
+  --accent-green: #188866;
+  --accent-green-light: #137657;
+  --accent-green-glow: rgba(24, 136, 102, 0.14);
+
+  --accent-cyan: #187e8c;
+  --accent-cyan-light: #146a75;
+  --accent-cyan-glow: rgba(24, 126, 140, 0.14);
+
+  --accent-amber: #a86619;
+  --accent-amber-light: #92530e;
+  --accent-amber-glow: rgba(168, 102, 25, 0.14);
+
+  --accent-coral: #c44860;
+  --accent-coral-light: #ab344c;
+  --accent-coral-glow: rgba(196, 72, 96, 0.14);
+
+  --accent-purple: #7669d4;
+  --accent-purple-light: #5d50bd;
+  --accent-purple-glow: rgba(118, 105, 212, 0.14);
+
+  --shadow-sm: 0 1px 3px 0 rgba(24, 34, 48, 0.06);
+  --shadow-md: 0 8px 20px -8px rgba(24, 34, 48, 0.13);
+  --shadow-lg: 0 14px 30px -10px rgba(24, 34, 48, 0.18);
+  --shadow-glow-pink: 0 0 14px rgba(118, 105, 212, 0.16);
+  --shadow-glow-green: 0 0 14px rgba(24, 136, 102, 0.16);
+  --shadow-glow-cyan: 0 0 14px rgba(24, 126, 140, 0.16);
+  --shadow-glow-indigo: 0 0 14px rgba(101, 89, 204, 0.16);
+}

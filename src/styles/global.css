@@ -1,0 +1,202 @@
+@import './variables.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(ellipse at 50% -18%, var(--bg-ambient), transparent 54%), var(--bg-app);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Pastel Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary-light);
+}
+
+/* Typography Helpers */
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all var(--transition-fast);
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+input, select {
+  font-family: inherit;
+}
+
+::selection {
+  color: var(--text-main);
+  background: var(--accent-primary-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Pastel Keyframe Pulses: Pastel Green & Pastel Pink */
+@keyframes pulse-cyan {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(110, 231, 183, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(110, 231, 183, 0);
+  }
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(110, 231, 183, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(110, 231, 183, 0);
+  }
+}
+
+@keyframes pulse-pink {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(244, 114, 182, 0);
+  }
+}
+
+.animate-pulse-cyan {
+  animation: pulse-cyan 1.6s infinite ease-in-out;
+}
+
+.animate-pulse-green {
+  animation: pulse-green 1.6s infinite ease-in-out;
+}
+
+.animate-pulse-pink {
+  animation: pulse-pink 1.6s infinite ease-in-out;
+}
+
+/* Pastel Badges: Pastel Pink & Pastel Green */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.18rem 0.52rem;
+  border-radius: var(--radius-full);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.badge-cyan {
+  background: var(--accent-green-glow);
+  color: var(--accent-green-light);
+  border: 1px solid rgba(110, 231, 183, 0.35);
+}
+
+.badge-green {
+  background: var(--accent-green-glow);
+  color: var(--accent-green-light);
+  border: 1px solid rgba(110, 231, 183, 0.35);
+}
+
+.badge-amber {
+  background: var(--accent-amber-glow);
+  color: var(--accent-amber-light);
+  border: 1px solid rgba(249, 168, 212, 0.35);
+}
+
+.badge-coral {
+  background: var(--accent-coral-glow);
+  color: var(--accent-coral-light);
+  border: 1px solid rgba(251, 113, 133, 0.35);
+}
+
+.badge-indigo, .badge-pink {
+  background: var(--accent-primary-glow);
+  color: var(--accent-primary-light);
+  border: 1px solid rgba(244, 114, 182, 0.35);
+}
+
+/* Card container */
+.panel-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.panel-card:hover {
+  border-color: var(--border-medium);
+}
+
+.panel-header {
+  padding: 0.7rem 0.95rem;
+  background: var(--bg-surface-elevated);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.panel-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.panel-subtitle {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+}
