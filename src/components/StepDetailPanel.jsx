@@ -4,6 +4,7 @@ import {
   Calculator,
   ArrowRight
 } from 'lucide-react';
+import { reconstructExpression } from '../algorithm/mcm';
 import { formatNumber } from '../utils/formatters';
 
 const TYPE_CONFIG = {
@@ -32,13 +33,22 @@ export default function StepDetailPanel({
     description = '',
     activeCell,
     chainLength,
-    candidate
+    candidate,
+    sTable
   } = currentStep;
 
   const typeConfig = TYPE_CONFIG[type] || { label: type || 'Step', badgeClass: 'badge-pink' };
 
   // Generate a brief single-sentence takeaway (keep it concise and scannable)
   const briefTakeaway = whyMatters || description || '';
+  let parenthesization = null;
+
+  if (activeCell && sTable && (candidate || type === 'CELL_COMPLETE')) {
+    const [i, j] = activeCell;
+    const expressionTable = sTable.map(row => row.map(splits => [...splits]));
+    if (candidate) expressionTable[i][j] = [candidate.k];
+    parenthesization = reconstructExpression(expressionTable, i, j);
+  }
 
   return (
     <div className="panel-card step-detail-panel">
@@ -130,18 +140,12 @@ export default function StepDetailPanel({
               </div>
             )}
 
-            {candidate && activeCell && (
-              <div className="parenthesization-explanation">
-                <strong>How this split becomes parentheses</strong>
-                <p>
-                  Split <code>k = {candidate.k}</code> divides <code>A{activeCell[0]}...A{activeCell[1]}</code> into left side <code>A{activeCell[0]}...A{candidate.k}</code> and right side <code>A{candidate.k + 1}...A{activeCell[1]}</code>. If this split has minimum cost, reconstruct each side recursively and wrap them together:
-                </p>
+            {parenthesization && (
+              <div className="parenthesization-progress">
+                <span>Parenthesization so far</span>
                 <div className="parenthesization-formula font-mono">
-                  (optimal(A{activeCell[0]}...A{candidate.k}) × optimal(A{candidate.k + 1}...A{activeCell[1]}))
+                  {parenthesization}
                 </div>
-                <p>
-                  A single-matrix side is just <code>Ai</code>; otherwise, follow that side's saved split. A trial that is not minimum is not used in the final parenthesization.
-                </p>
               </div>
             )}
           </div>
@@ -277,27 +281,22 @@ export default function StepDetailPanel({
           padding-top: 0.2rem;
         }
 
-        .parenthesization-explanation {
+        .parenthesization-progress {
           display: flex;
           flex-direction: column;
-          gap: 0.35rem;
-          margin-top: 0.4rem;
-          padding: 0.65rem 0.75rem;
+          gap: 0.3rem;
+          margin-top: 0.25rem;
+          padding: 0.55rem 0.7rem;
           border-left: 2px solid var(--accent-cyan);
           border-radius: var(--radius-sm);
           background: var(--bg-app);
           color: var(--text-secondary);
-          font-size: 0.78rem;
-          line-height: 1.5;
+          font-size: 0.72rem;
         }
 
-        .parenthesization-explanation strong {
+        .parenthesization-progress > span {
           color: var(--text-main);
-        }
-
-        .parenthesization-explanation code {
-          color: var(--text-main);
-          font-weight: 600;
+          font-weight: 700;
         }
 
         .parenthesization-formula {
