@@ -305,7 +305,7 @@ export default function StepDetailPanel({
           border: 1px solid var(--border-subtle);
           border-radius: var(--radius-sm);
           background: var(--bg-surface);
-          color: var(--accent-cyan-light);
+          color: var(--text-primary);
           text-align: center;
         }
 
