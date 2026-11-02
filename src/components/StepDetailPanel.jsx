@@ -129,6 +129,21 @@ export default function StepDetailPanel({
                 </div>
               </div>
             )}
+
+            {candidate && activeCell && (
+              <div className="parenthesization-explanation">
+                <strong>How this split becomes parentheses</strong>
+                <p>
+                  Split <code>k = {candidate.k}</code> divides <code>A{activeCell[0]}...A{activeCell[1]}</code> into left side <code>A{activeCell[0]}...A{candidate.k}</code> and right side <code>A{candidate.k + 1}...A{activeCell[1]}</code>. If this split has minimum cost, reconstruct each side recursively and wrap them together:
+                </p>
+                <div className="parenthesization-formula font-mono">
+                  (optimal(A{activeCell[0]}...A{candidate.k}) × optimal(A{candidate.k + 1}...A{activeCell[1]}))
+                </div>
+                <p>
+                  A single-matrix side is just <code>Ai</code>; otherwise, follow that side's saved split. A trial that is not minimum is not used in the final parenthesization.
+                </p>
+              </div>
+            )}
           </div>
         )}
 
@@ -260,6 +275,39 @@ export default function StepDetailPanel({
           gap: 0.35rem;
           flex-wrap: wrap;
           padding-top: 0.2rem;
+        }
+
+        .parenthesization-explanation {
+          display: flex;
+          flex-direction: column;
+          gap: 0.35rem;
+          margin-top: 0.4rem;
+          padding: 0.65rem 0.75rem;
+          border-left: 2px solid var(--accent-cyan);
+          border-radius: var(--radius-sm);
+          background: var(--bg-app);
+          color: var(--text-secondary);
+          font-size: 0.78rem;
+          line-height: 1.5;
+        }
+
+        .parenthesization-explanation strong {
+          color: var(--text-main);
+        }
+
+        .parenthesization-explanation code {
+          color: var(--text-main);
+          font-weight: 600;
+        }
+
+        .parenthesization-formula {
+          overflow-wrap: anywhere;
+          padding: 0.4rem 0.55rem;
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-sm);
+          background: var(--bg-surface);
+          color: var(--accent-cyan-light);
+          text-align: center;
         }
 
         .split-pill {
