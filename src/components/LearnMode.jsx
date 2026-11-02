@@ -156,7 +156,7 @@ export default function LearnMode({ onNavigateToVisualize, onNavigateToComplexit
               For example, in a chain of 6 matrices, subproblem <code>MCM(2, 4)</code> is invoked dozens of times across independent recursive branches!
             </div>
             <p>
-              There are only <code>n(n+1)/2</code> distinct subproblems <code>MCM(i, j)</code> for <code>1 ≤ i ≤ j ≤ n</code>. By storing each subproblem answer in a table, we turn an exponential \(O(2^n)\) recursion into a polynomial \(O(n^3)\) table fill.
+              There are only <code>n(n+1)/2</code> distinct subproblems <code>MCM(i, j)</code> for <code>1 ≤ i ≤ j ≤ n</code>. By storing each subproblem answer in a table, we turn an exponential <code>O(2^n)</code> recursion into a polynomial <code>O(n^3)</code> table fill.
             </p>
             <div className="action-row">
               <button className="action-link-btn" onClick={onNavigateToVisualize}>
@@ -195,13 +195,13 @@ export default function LearnMode({ onNavigateToVisualize, onNavigateToComplexit
                 <ul className="bullet-list">
                   <li>Natural recursive structure following the mathematical recurrence.</li>
                   <li>Solves subproblems on-demand; stores results in a memo table.</li>
-                  <li>Incurs function call overhead and recursion call-stack space \(O(n)\).</li>
+                  <li>Incurs function call overhead and recursion call-stack space <code>O(n)</code>.</li>
                 </ul>
               </div>
               <div className="comp-card">
                 <h4>Bottom-Up Tabulation</h4>
                 <ul className="bullet-list">
-                  <li>Iterative loops; fills table diagonally by increasing chain length \(L\).</li>
+                  <li>Iterative loops; fills table diagonally by increasing chain length <code>L</code>.</li>
                   <li>Zero recursion overhead, cache-friendly memory locality.</li>
                   <li>Guarantees subproblems are ready when larger chains query them.</li>
                 </ul>
@@ -237,28 +237,32 @@ export default function LearnMode({ onNavigateToVisualize, onNavigateToComplexit
           <article className="article-body">
             <h2>9. Reconstructing from Split Table s[i, j]</h2>
             <p>
-              The cost table <code>m[i, j]</code> tells us <em>how many multiplications</em> we need, but not <em>how to parenthesize</em>.
-              To reconstruct the optimal expression, we maintain a companion split table <code>s[i, j]</code> that records the winning split index <code>k</code>.
+              The cost table <code>m[i, j]</code> tells us the minimum number of multiplications, but not which parentheses achieve that cost. While filling each cost cell, we also save the split point in a companion table called <code>s</code>.
             </p>
-            <div className="math-callout font-mono">
-              Print-Optimal-Parens(s, i, j):
-              <br />
-              &nbsp;&nbsp;if i == j: print "Ai"
-              <br />
-              &nbsp;&nbsp;else:
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;k = s[i, j]
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;print "("
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;Print-Optimal-Parens(s, i, k)
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;print " × "
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;Print-Optimal-Parens(s, k + 1, j)
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;print ")"
+            <div className="alert-box alert-pink">
+              <strong>What does s[i, j] store?</strong> It stores the index <code>k</code> where the optimal product of <code>Ai...Aj</code> is divided: the left chain ends at <code>Ak</code>, and the right chain starts at <code>A(k+1)</code>. It stores split points, not a finished expression.
             </div>
+            <h3>Walk through an example</h3>
+            <p>
+              Suppose the split table contains <code>s[1, 4] = 2</code>, <code>s[1, 2] = 1</code>, and <code>s[3, 4] = 3</code>. Start with the full chain, then follow each saved split:
+            </p>
+            <ol className="bullet-list">
+              <li><code>s[1, 4] = 2</code> divides the chain between A2 and A3, giving the subchains A1...A2 and A3...A4.</li>
+              <li><code>s[1, 2] = 1</code> divides the left subchain into A1 and A2; <code>s[3, 4] = 3</code> divides the right one into A3 and A4.</li>
+              <li>Each single-matrix subchain has reached the base case. Work back up the splits and join each pair with parentheses.</li>
+            </ol>
+            <div className="math-callout font-mono">
+              s[1,4] = 2
+              <br />
+              ├─ left: s[1,2] = 1 → (A1 × A2)
+              <br />
+              └─ right: s[3,4] = 3 → (A3 × A4)
+              <br /><br />
+              Result: ((A1 × A2) × (A3 × A4))
+            </div>
+            <p>
+              In general, read <code>k = s[i, j]</code>, reconstruct <code>Ai...Ak</code> and <code>A(k+1)...Aj</code> the same way, then wrap their product in parentheses. Stop when <code>i = j</code>; that subchain is just <code>Ai</code>. If several split points tie for the minimum cost, each one gives a different optimal parenthesization.
+            </p>
           </article>
         )}
 
@@ -273,8 +277,8 @@ export default function LearnMode({ onNavigateToVisualize, onNavigateToComplexit
               C(n-1) = (1/n) × Binomial(2n-2, n-1)
             </div>
             <p>
-              Catalan numbers grow as \(\Omega(4^n / n^{3/2})\), which is strictly exponential!
-              For \(n = 10\), there are 4,862 parenthesizations; for \(n = 20\), over 1.76 billion!
+              Catalan numbers grow as <code>Ω(4^n / n^(3/2))</code>, which is strictly exponential!
+              For <code>n = 10</code>, there are 4,862 parenthesizations; for <code>n = 20</code>, over 1.76 billion!
             </p>
             <p>
               In contrast, Bottom-Up DP evaluates only:
