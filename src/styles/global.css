@@ -118,7 +118,7 @@ input::placeholder {
 
 .badge-cyan,
 .badge-indigo {
-  color: var(--state-dependency);
+  color: var(--state-dependency-text);
   background: var(--surface-dependency);
   border: 1px solid var(--state-dependency);
 }
@@ -1033,14 +1033,14 @@ input::placeholder {
 }
 
 .app-layout .dp-table-panel .cell-diagonal {
-  color: var(--state-optimal);
+  color: var(--state-optimal-text);
   background: var(--bg-page);
   border-color: var(--state-optimal);
 }
 
 .app-layout .dp-table-panel .cell-diagonal .cell-content,
 .app-layout .dp-table-panel .cell-diagonal .base-label {
-  color: var(--state-optimal);
+  color: var(--state-optimal-text);
 }
 
 .app-layout .recursion-panel .tree-ctrls .tree-btn:last-child {

@@ -22,6 +22,7 @@
 
   --state-active: #F43F5E;
   --state-dependency: #63D9F5;
+  --state-dependency-text: var(--state-dependency);
   --state-optimal: #00D6A3;
   --state-optimal-text: #8AF0CC;
   --state-candidate: #F6C453;
@@ -113,6 +114,7 @@
   --pink-soft: #F8DCE9;
   --state-active: #FF2E93;
   --state-dependency: #DCCAFF;
+  --state-dependency-text: #53316F;
   --state-optimal: #B9D8C5;
   --state-optimal-text: #386641;
   --accent-green-light: #24784F;
