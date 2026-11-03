@@ -156,7 +156,7 @@ export default function App() {
   const effectiveActiveCell = inspectedCell || currentStep.activeCell || [1, numMatrices];
 
   return (
-    <div className="app-layout">
+    <div className={`app-layout ${currentMode === 'practice' ? 'practice-page-layout' : ''}`}>
       {/* Top Navigation */}
       <Navbar
         currentMode={currentMode}
@@ -166,7 +166,7 @@ export default function App() {
         onReset={handleReset}
       />
 
-      <main className={`main-content-area ${currentMode !== 'visualize' ? 'scrollable-mode' : ''}`}>
+      <main className={`main-content-area ${currentMode !== 'visualize' ? 'scrollable-mode' : ''} ${currentMode === 'practice' ? 'practice-page-mode' : ''}`}>
         {currentMode === 'visualize' && (
           <div className="visualize-mode-container">
             {/* STAGE 1: SET UP (Collapsible Sleek Strip) */}
@@ -300,6 +300,10 @@ export default function App() {
           overflow-y: auto;
         }
 
+        .main-content-area.practice-page-mode {
+          overflow: hidden;
+        }
+
         .visualize-mode-container {
           display: flex;
           flex-direction: column;
@@ -368,6 +372,18 @@ export default function App() {
           .col-steps {
             grid-column: 1 / -1;
             height: 420px;
+          }
+
+          .app-layout.practice-page-layout {
+            height: 100vh;
+            height: 100dvh;
+            max-height: 100vh;
+            max-height: 100dvh;
+            overflow: hidden;
+          }
+
+          .app-layout.practice-page-layout .main-content-area {
+            overflow: hidden;
           }
         }
 

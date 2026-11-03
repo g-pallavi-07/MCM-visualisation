@@ -708,15 +708,20 @@ export default function PracticeMode({ dimensions }) {
 
       <style>{`
         .practice-container {
+          flex: 1;
+          min-height: 0;
+          width: 100%;
           max-width: 1100px;
-          margin: 1rem auto;
-          padding: 0 1.25rem 2rem;
+          margin: 0 auto;
+          padding: 1rem 1.25rem;
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
+          overflow: hidden;
         }
 
         .practice-toolbar {
+          flex-shrink: 0;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -802,6 +807,9 @@ export default function PracticeMode({ dimensions }) {
         }
 
         .question-card {
+          flex: 1;
+          min-height: 0;
+          overflow-y: auto;
           padding: 1.35rem;
           display: flex;
           flex-direction: column;
